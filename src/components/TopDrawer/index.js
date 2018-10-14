@@ -38,14 +38,13 @@ class TemporaryDrawer extends React.Component {
         const {classes} = this.props;
         const fullList = (
             <div className={classes.fullList}>
-                <List>{mailFolderListItems}</List>
-                <Divider/>
+                {/*<List>{mailFolderListItems}</List>*/}
                 {/*<List>{otherMailFolderListItems}</List>*/}
                 {/*<Divider/>*/}
                 <form className={classes.container} noValidate autoComplete="off">
                     <TextField
                         id="standard-search"
-                        label="Search a Subreddit"
+                        label="Search..."
                         type="search"
                         className={classes.textField}
                         margin="normal"

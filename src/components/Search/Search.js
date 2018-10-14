@@ -202,7 +202,7 @@ export default class Search extends React.Component {
                     <HeroSection>
                         <SearchContainer>
                             <Input>
-                                <input placeholder="Search a Subreddit..." type="text" value={this.state.subReddit} onChange={this.handleChange}/>
+                                <input placeholder="Search..." type="text" value={this.state.subReddit} onChange={this.handleChange}/>
                             </Input>
                             <SubmitButton>
                                 <button type="submit" onClick={this.handleSubmit}>Search</button>

@@ -18,7 +18,7 @@ const styles = {
         marginRight: 10,
     },
     media: {
-        height: 140,
+        height: 500,
         objectFit: 'cover',
     },
 };
@@ -33,16 +33,13 @@ function Index(props) {
                         <CardActionArea>
                             <CardMedia
                                 className={classes.media}
-                                image={post.data.preview.images[0].source.url}
+                                image={'https://image.tmdb.org/t/p/w500/' + post.poster_path}
+                                // image={post.data.preview.images[0].source.url}
                                 title="Card Title"
                             />
                             <CardContent>
-                                <Typography gutterBottom variant="h6" component="h6">
-                                    {post.data.title} ...
-                                    {post.data.subreddit_name_prefixed}
-                                </Typography>
                                 <Typography component="p">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias amet consequatur cum eaque eius, est exercitationem facere iusto minus necessitatibus nisi non officia quia ratione repudiandae sit ut vero.
+                                    {(post.overview).substring(0,150)}...
                                 </Typography>
                             </CardContent>
                         </CardActionArea>

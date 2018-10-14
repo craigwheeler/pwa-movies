@@ -14,6 +14,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
+        paddingTop: 60,
     },
     gridList: {
         // width: 500,
@@ -122,18 +123,18 @@ function ImageGridList(props) {
     console.log("posts: ", posts)
     return (
         <div className={classes.root}>
-            <GridList className={classes.gridList} cols={2}>
-                {posts.map((tile, i) => (
+            <GridList cellHeight={250} className={classes.gridList} cols={2}>
+                {posts.map((post, i) => (
                     <GridListTile key={i} cols={1}>
-                        <img src={tile.data.preview.images[0].source.url}/>
+                        <img src={'https://image.tmdb.org/t/p/w500/' + post.poster_path}/>
                         <GridListTileBar
-                            title={tile.data.title}
-                            subtitle={<span>by: {tile.data.author}</span>}
-                            actionIcon={
-                                <IconButton className={classes.icon}>
-                                    <InfoIcon/>
-                                </IconButton>
-                            }
+                            title={post.name}
+                            subtitle={<span>First Aired: {(post.first_air_date).substring(0, 4)}</span>}
+                            // actionIcon={
+                            //     <IconButton className={classes.icon}>
+                            //         <InfoIcon/>
+                            //     </IconButton>
+                            // }
                         />
                     </GridListTile>
                 ))}

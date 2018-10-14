@@ -67,7 +67,6 @@ const styles = theme => ({
     },
     menuButton: {
         marginLeft: 30,
-        // marginRight: 20,
     },
     hide: {
         display: 'none',
@@ -87,16 +86,14 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
+        // paddingTop: 25,
+        paddingBottom: 20,
         backgroundColor: theme.palette.background.default,
-        // padding: theme.spacing.unit * 3,
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
     },
-    // 'content-left': {
-    //     marginLeft: -drawerWidth - 1,
-    // },
     'content-right': {
         marginRight: -drawerWidth,
     },
@@ -129,14 +126,14 @@ class PersistentDrawer extends React.Component {
         this.fetchData();
     }
     fetchData = () => {
-        const baseUrl = 'https://www.reddit.com/r/';
+        const baseUrl = 'https://api.themoviedb.org/3/tv/popular?api_key=d06212a1c793be8e5b14092f02da816c';
         const extJson = '/.json?raw_json=1';
         const postLimit = '&limit=50';
         const {subReddit} = this.state;
-        axios.get(baseUrl + subReddit + extJson + postLimit)
+        axios.get(baseUrl)
             .then((response) => {
                 this.setState({
-                    posts: response.data.data.children,
+                    posts: response.data.results,
                 });
             })
             .catch((error) => {
@@ -169,7 +166,9 @@ class PersistentDrawer extends React.Component {
     render() {
         const {classes, theme} = this.props;
         const {anchor, open, posts} = this.state;
+
         console.log("posts: ", posts)
+
         const drawer = (
             <Drawer
                 variant="persistent"
