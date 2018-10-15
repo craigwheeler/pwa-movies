@@ -115,22 +115,26 @@ class PersistentDrawer extends React.Component {
         super(props);
         this.state = {
             posts: [],
-            subReddit: 'funny',
             open: false,
             anchor: 'left',
-            cardView: true,
-            galleryView: false,
+            cardView: false,
+            galleryView: true,
         };
     }
     componentDidMount() {
         this.fetchData();
     }
+
+    // https://api.themoviedb.org/3/movie/popular?api_key=d06212a1c793be8e5b14092f02da816c&page=1
+
     fetchData = () => {
-        const baseUrl = 'https://api.themoviedb.org/3/tv/popular?api_key=d06212a1c793be8e5b14092f02da816c';
-        const extJson = '/.json?raw_json=1';
-        const postLimit = '&limit=50';
-        const {subReddit} = this.state;
-        axios.get(baseUrl)
+        const baseUrl = 'https://api.themoviedb.org/3/';
+        const viewType = 'movie';
+        const viewSearch = 'popular';
+        const apiKey = '?api_key=d06212a1c793be8e5b14092f02da816c';
+        const pageKey = '&page=';
+        const pageNum = 1;
+        axios.get(baseUrl + viewType + '/' + viewSearch + apiKey + pageKey + pageNum)
             .then((response) => {
                 this.setState({
                     posts: response.data.results,
@@ -166,9 +170,7 @@ class PersistentDrawer extends React.Component {
     render() {
         const {classes, theme} = this.props;
         const {anchor, open, posts} = this.state;
-
         console.log("posts: ", posts)
-
         const drawer = (
             <Drawer
                 variant="persistent"

@@ -128,8 +128,8 @@ function ImageGridList(props) {
                     <GridListTile key={i} cols={1}>
                         <img src={'https://image.tmdb.org/t/p/w500/' + post.poster_path}/>
                         <GridListTileBar
-                            title={post.name}
-                            subtitle={<span>First Aired: {(post.first_air_date).substring(0, 4)}</span>}
+                            title={post.name || post.title}
+                            // subtitle={<span>First Aired: {(post.first_air_date).substring(0, 4)}</span>}
                             // actionIcon={
                             //     <IconButton className={classes.icon}>
                             //         <InfoIcon/>
