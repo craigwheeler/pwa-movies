@@ -25,6 +25,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ViewList from '@material-ui/icons/ViewList';
 import ViewModule from '@material-ui/icons/ViewModule';
 import BottomNavigation from './components/BottomNavigation'
+import ViewSelect from './components/ViewSelect'
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -219,26 +220,33 @@ class PersistentDrawer extends React.Component {
                                         <MenuIcon/>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs={3}>
-                                    <IconButton
-                                        color="inherit"
-                                        aria-label="Open drawer"
-                                        onClick={this.handleCardView}
-                                        className={classNames(classes.menuButton, open && classes.hide)}
-                                    >
-                                        <ViewList/>
-                                    </IconButton>
+
+                                <Grid item xs={6}>
+                                    <ViewSelect/>
                                 </Grid>
-                                <Grid item xs={3}>
-                                    <IconButton
-                                        color="inherit"
-                                        aria-label="Open drawer"
-                                        onClick={this.handleGalleryView}
-                                        className={classNames(classes.menuButton, open && classes.hide)}
-                                    >
-                                        <ViewModule/>
-                                    </IconButton>
-                                </Grid>
+
+
+                                {/*<Grid item xs={3}>*/}
+                                    {/*<IconButton*/}
+                                        {/*color="inherit"*/}
+                                        {/*aria-label="Open drawer"*/}
+                                        {/*onClick={this.handleCardView}*/}
+                                        {/*className={classNames(classes.menuButton, open && classes.hide)}*/}
+                                    {/*>*/}
+                                        {/*<ViewList/>*/}
+                                    {/*</IconButton>*/}
+                                {/*</Grid>*/}
+                                {/*<Grid item xs={3}>*/}
+                                    {/*<IconButton*/}
+                                        {/*color="inherit"*/}
+                                        {/*aria-label="Open drawer"*/}
+                                        {/*onClick={this.handleGalleryView}*/}
+                                        {/*className={classNames(classes.menuButton, open && classes.hide)}*/}
+                                    {/*>*/}
+                                        {/*<ViewModule/>*/}
+                                    {/*</IconButton>*/}
+                                {/*</Grid>*/}
+
                                 {/*<Grid item xs={6} className={classes.appTitle}>*/}
                                 {/*<Typography variant="h6" color="inherit" noWrap>*/}
                                 {/*Browse Reddit*/}
