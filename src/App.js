@@ -26,6 +26,7 @@ import ViewModule from '@material-ui/icons/ViewModule';
 import BottomNavigation from './components/BottomNavigation'
 import ViewSelect from './components/ViewSelect'
 import {sidebarItemsOne, sidebarItemsTwo} from './components/SidebarItems'
+import {baseUrl, viewType, viewSearch, apiKey, pageKey, pageNum} from './api'
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -88,7 +89,7 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         // paddingTop: 25,
-        paddingBottom: 20,
+        // paddingBottom: 20,
         backgroundColor: theme.palette.background.default,
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -125,14 +126,7 @@ class PersistentDrawer extends React.Component {
     componentDidMount() {
         this.fetchData();
     }
-    // https://api.themoviedb.org/3/movie/popular?api_key=d06212a1c793be8e5b14092f02da816c&page=1
     fetchData = () => {
-        const baseUrl = 'https://api.themoviedb.org/3/';
-        const viewType = 'movie';
-        const viewSearch = 'popular';
-        const apiKey = '?api_key=d06212a1c793be8e5b14092f02da816c';
-        const pageKey = '&page=';
-        const pageNum = 1;
         axios.get(baseUrl + viewType + '/' + viewSearch + apiKey + pageKey + pageNum)
             .then((response) => {
                 this.setState({
@@ -182,7 +176,7 @@ class PersistentDrawer extends React.Component {
                 <div className={classes.drawerHeader}>
 
                     <Typography component="p">
-                        APP TITLE
+                        {/*APP TITLE*/}
                     </Typography>
 
                     <IconButton onClick={this.handleDrawerClose}>

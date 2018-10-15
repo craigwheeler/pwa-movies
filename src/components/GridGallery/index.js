@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid'
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -15,12 +16,13 @@ const styles = theme => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         paddingTop: 60,
+        paddingBottom: 5,
     },
-    gridList: {
-        // width: 500,
-        // height: 'auto',
-        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-        // transform: 'translateZ(0)',
+    container: {
+        padding: 2,
+    },
+    image: {
+        width: '100%',
     },
     titleBar: {
         background:
@@ -31,114 +33,36 @@ const styles = theme => ({
         color: 'white',
     },
 });
-const tileData = [
-    {
-        thumbnail: 'http://unsplash.it/640x425',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x426',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x427',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x428',
-        title: 'Image',
-        author: 'author',
-        cols: 3,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x429',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x430',
-        title: 'Image',
-        author: 'author',
-        cols: 2,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x431',
-        title: 'Image',
-        author: 'author',
-        cols: 2,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x432',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x425',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x426',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x427',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x428',
-        title: 'Image',
-        author: 'author',
-        cols: 3,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x429',
-        title: 'Image',
-        author: 'author',
-        cols: 1,
-    },
-    {
-        thumbnail: 'http://unsplash.it/640x430',
-        title: 'Image',
-        author: 'author',
-        cols: 2,
-    }
-];
-const numCols = [2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2]
 function ImageGridList(props) {
     const {classes, posts} = props;
     console.log("posts: ", posts)
     return (
         <div className={classes.root}>
-            <GridList cellHeight={250} className={classes.gridList} cols={2}>
+            <Grid container>
                 {posts.map((post, i) => (
-                    <GridListTile key={i} cols={1}>
-                        <img src={'https://image.tmdb.org/t/p/w500/' + post.poster_path}/>
-                        <GridListTileBar
-                            title={post.name || post.title}
-                            // subtitle={<span>First Aired: {(post.first_air_date).substring(0, 4)}</span>}
-                            // actionIcon={
-                            //     <IconButton className={classes.icon}>
-                            //         <InfoIcon/>
-                            //     </IconButton>
-                            // }
-                        />
-                    </GridListTile>
+                    <Grid item xs={6} md={3} lg={2} className={classes.container}>
+                        <img src={'https://image.tmdb.org/t/p/w500/' + post.poster_path} className={classes.image}/>
+                    </Grid>
                 ))}
-            </GridList>
+            </Grid>
+
+            {/*<GridList cellHeight={250} cols={2} container>*/}
+            {/*{posts.map((post, i) => (*/}
+            {/*<GridListTile key={i}>*/}
+            {/*<img src={'https://image.tmdb.org/t/p/w500/' + post.poster_path}/>*/}
+            {/*<GridListTileBar*/}
+            {/*title={post.name || post.title}*/}
+            {/*// subtitle={<span>First Aired: {(post.first_air_date).substring(0, 4)}</span>}*/}
+            {/*// actionIcon={*/}
+            {/*//     <IconButton className={classes.icon}>*/}
+            {/*//         <InfoIcon/>*/}
+            {/*//     </IconButton>*/}
+            {/*// }*/}
+            {/*/>*/}
+            {/*</GridListTile>*/}
+            {/*))}*/}
+            {/*</GridList>*/}
+
         </div>
     );
 }
