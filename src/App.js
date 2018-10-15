@@ -14,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import {mailFolderListItems, otherMailFolderListItems} from './tileData';
 import Grid from '@material-ui/core/Grid'
 import SearchBar from './components/TopDrawer'
 import axios from 'axios'
@@ -26,6 +25,7 @@ import ViewList from '@material-ui/icons/ViewList';
 import ViewModule from '@material-ui/icons/ViewModule';
 import BottomNavigation from './components/BottomNavigation'
 import ViewSelect from './components/ViewSelect'
+import {sidebarItemsOne, sidebarItemsTwo} from './components/SidebarItems'
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -125,9 +125,7 @@ class PersistentDrawer extends React.Component {
     componentDidMount() {
         this.fetchData();
     }
-
     // https://api.themoviedb.org/3/movie/popular?api_key=d06212a1c793be8e5b14092f02da816c&page=1
-
     fetchData = () => {
         const baseUrl = 'https://api.themoviedb.org/3/';
         const viewType = 'movie';
@@ -182,14 +180,19 @@ class PersistentDrawer extends React.Component {
                 }}
             >
                 <div className={classes.drawerHeader}>
+
+                    <Typography component="p">
+                        APP TITLE
+                    </Typography>
+
                     <IconButton onClick={this.handleDrawerClose}>
                         {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
                     </IconButton>
                 </div>
                 <Divider/>
-                <List>{mailFolderListItems}</List>
+                <List>{sidebarItemsOne}</List>
                 <Divider/>
-                <List>{otherMailFolderListItems}</List>
+                <List>{sidebarItemsTwo}</List>
             </Drawer>
         );
         let before = null;
@@ -226,32 +229,29 @@ class PersistentDrawer extends React.Component {
                                 </Grid>
 
 
+                                {/*TOGGLE GRID VIEW*/}
                                 {/*<Grid item xs={3}>*/}
-                                    {/*<IconButton*/}
-                                        {/*color="inherit"*/}
-                                        {/*aria-label="Open drawer"*/}
-                                        {/*onClick={this.handleCardView}*/}
-                                        {/*className={classNames(classes.menuButton, open && classes.hide)}*/}
-                                    {/*>*/}
-                                        {/*<ViewList/>*/}
-                                    {/*</IconButton>*/}
+                                {/*<IconButton*/}
+                                {/*color="inherit"*/}
+                                {/*aria-label="Open drawer"*/}
+                                {/*onClick={this.handleCardView}*/}
+                                {/*className={classNames(classes.menuButton, open && classes.hide)}*/}
+                                {/*>*/}
+                                {/*<ViewList/>*/}
+                                {/*</IconButton>*/}
                                 {/*</Grid>*/}
                                 {/*<Grid item xs={3}>*/}
-                                    {/*<IconButton*/}
-                                        {/*color="inherit"*/}
-                                        {/*aria-label="Open drawer"*/}
-                                        {/*onClick={this.handleGalleryView}*/}
-                                        {/*className={classNames(classes.menuButton, open && classes.hide)}*/}
-                                    {/*>*/}
-                                        {/*<ViewModule/>*/}
-                                    {/*</IconButton>*/}
+                                {/*<IconButton*/}
+                                {/*color="inherit"*/}
+                                {/*aria-label="Open drawer"*/}
+                                {/*onClick={this.handleGalleryView}*/}
+                                {/*className={classNames(classes.menuButton, open && classes.hide)}*/}
+                                {/*>*/}
+                                {/*<ViewModule/>*/}
+                                {/*</IconButton>*/}
                                 {/*</Grid>*/}
 
-                                {/*<Grid item xs={6} className={classes.appTitle}>*/}
-                                {/*<Typography variant="h6" color="inherit" noWrap>*/}
-                                {/*Browse Reddit*/}
-                                {/*</Typography>*/}
-                                {/*</Grid>*/}
+
                                 <Grid item xs={3} className={classes.searchIcon}>
                                     <SearchBar/>
                                 </Grid>

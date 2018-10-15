@@ -26,8 +26,7 @@ const styles = theme => ({
 });
 class SimpleSelect extends React.Component {
     state = {
-        age: 10,
-        name: 'hai',
+        view: 10,
     };
     handleChange = event => {
         this.setState({[event.target.name]: event.target.value});
@@ -37,19 +36,14 @@ class SimpleSelect extends React.Component {
         return (
             <form className={classes.root} autoComplete="off">
                 <FormControl className={classes.formControl}>
-                    {/*<InputLabel htmlFor="age-auto-width">Age</InputLabel>*/}
                     <Select
-                        value={this.state.age}
+                        value={this.state.view}
                         onChange={this.handleChange}
-                        input={<Input name="age" id="age-auto-width"/>}
-                        // autoWidth
+                        input={<Input name="view"/>}
                     >
-                        <MenuItem value={10}>Latest</MenuItem>
-                        <MenuItem value={20}>Trending</MenuItem>
-                        <MenuItem value={30}>Popular</MenuItem>
-                        <MenuItem value={40}>Top Rated</MenuItem>
+                        <MenuItem value={10}>Popular</MenuItem>
+                        <MenuItem value={20}>Top Rated</MenuItem>
                     </Select>
-                    {/*<FormHelperText>Auto width</FormHelperText>*/}
                 </FormControl>
             </form>
         );
