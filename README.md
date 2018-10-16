@@ -1,5 +1,7 @@
-# PWA Boilerplate
-> A simple boilerplate to create PWA apps
+# PWA Movies
+> A simple pwa created to display popular movies and TV shows
+
+![](https://github.com/craigwheeler/pwa-movies/blob/master/app-home.gif)
 
 ## Development setup
 
